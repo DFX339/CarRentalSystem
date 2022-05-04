@@ -3,7 +3,7 @@
     <title>Car Rental Service</title>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script>
-        function login()
+        function rentCar()
         {
             var carType = document.getElementById("carType").value;
             var rentNumbers = document.getElementById("rentNumbers").value;
@@ -61,18 +61,21 @@
 </head>
 <body>
 <!-- http://localhost:8081/prudentialCarRental/ -->
-<p>Car Rental Service</p>
-<form id="carRentalId" action="/prudentialCarRental/car/rental" method="post"  onsubmit="return false">
-    <p> carType:
-        <select id="carType" >
-            <option value="ToyotaCamry">Toyota Camry 2</option>
-            <option value="BMW650">BMW 650 2</option>
-        </select>
-    </p>
-    <p> rentNumbers: <input id="rentNumbers" type="text" onkeyup="this.value=this.value.replace(/\D/g,'')" /> </p>
-    <p> rentDays: <input id="rentDays" type="text" onkeyup="this.value=this.value.replace(/\D/g,'')"/> </p>
-    <p> maxCouldPayFee: <input id="maxCouldPayFee" type="text" onkeyup="this.value=this.value.replace(/\D/g,'')" /> </p>
-    <p> <input type="button" onclick="login()" value="Sign In" > </p>
-</form>
+    <div style="position:absolute; left:50%">
+        <p style="font-size:35px;">Car Rental Service</p>
+        <form id="carRentalId" action="/prudentialCarRental/car/rental" method="post"  onsubmit="return false">
+            <p> carType:
+                <select id="carType" >
+                    <option value="ToyotaCamry">Toyota Camry 2</option>
+                    <option value="BMW650">BMW 650 2</option>
+                </select>
+            </p>
+            <p> rentNumbers: <input id="rentNumbers" type="text" onkeyup="this.value=this.value.replace(/\D/g,'')" /> </p>
+            <p> rentDays: <input id="rentDays" type="text" onkeyup="this.value=this.value.replace(/\D/g,'')"/> </p>
+            <p> maxCouldPayFee: <input id="maxCouldPayFee" type="text" onkeyup="this.value=this.value.replace(/\D/g,'')" /> </p>
+            <p> <input type="button" onclick="rentCar()" value="confirm" style="font-size: 20px;" > </p>
+        </form>
+    </div>
 </body>
+
 </html>
