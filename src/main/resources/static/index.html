@@ -1,0 +1,78 @@
+<html>
+<head>
+    <title>Car Rental Service</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        function login()
+        {
+            var carType = document.getElementById("carType").value;
+            var rentNumbers = document.getElementById("rentNumbers").value;
+            var rentDays = document.getElementById("rentDays").value;
+            var maxCouldPayFee = document.getElementById("maxCouldPayFee").value;
+
+            if (!carType)
+            {
+                alert("Please choose correct car type.");
+                return;
+            }
+            if (!rentNumbers)
+            {
+                alert("Please input rentNumbers.");
+                return;
+            }
+            if (!rentDays)
+            {
+                alert("Please input rentDays.");
+                return;
+            }
+            if (!maxCouldPayFee)
+            {
+                alert("Please input maxCouldPayFee.");
+                return;
+            }
+
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                url: '/prudentialCarRental/car/rental',
+                contentType: "application/json",
+                data:JSON.stringify({
+                    "carType": carType,
+                    "rentNumbers": rentNumbers,
+                    "rentDays": rentDays,
+                    "maxCouldPayFee": maxCouldPayFee
+                }),
+                success: function (result)
+                {
+                    console.log("data is :" + result)
+                    if (result.code == 200)
+                    {
+                        window.location.href = "./templates/result.html";
+                    }
+                    else
+                    {
+                        alert(result.errorMsg)
+                    }
+                }
+            });
+        }
+
+    </script>
+</head>
+<body>
+<!-- http://localhost:8081/prudentialCarRental/ -->
+<p>Car Rental Service</p>
+<form id="carRentalId" action="/prudentialCarRental/car/rental" method="post"  onsubmit="return false">
+    <p> carType:
+        <select id="carType" >
+            <option value="ToyotaCamry">Toyota Camry 2</option>
+            <option value="BMW650">BMW 650 2</option>
+        </select>
+    </p>
+    <p> rentNumbers: <input id="rentNumbers" type="text" onkeyup="this.value=this.value.replace(/\D/g,'')" /> </p>
+    <p> rentDays: <input id="rentDays" type="text" onkeyup="this.value=this.value.replace(/\D/g,'')"/> </p>
+    <p> maxCouldPayFee: <input id="maxCouldPayFee" type="text" onkeyup="this.value=this.value.replace(/\D/g,'')" /> </p>
+    <p> <input type="button" onclick="login()" value="Sign In" > </p>
+</form>
+</body>
+</html>
