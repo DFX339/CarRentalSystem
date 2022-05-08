@@ -25,7 +25,7 @@ public class CarRentFactory
         {
             if (leftBWMCarNumbers - rentNums < 0)
             {
-                throw new CarRentalException(ErrorCode.CarNumbersNotEnoughException, "Sorry, CarType.BMW650 left numbers is not enough,Please choose other scheme.");
+                throw new CarRentalException(ErrorCode.CarNumbersNotEnoughException, "Sorry, CarType.BMW650 left numbers is not enough, only " + leftBWMCarNumbers +",Please choose other scheme.");
             }
             leftBWMCarNumbers -= rentNums;
             return new BMW650Car();
@@ -34,14 +34,14 @@ public class CarRentFactory
         {
             if (leftToyotaCarNumbers - rentNums < 0)
             {
-                throw new CarRentalException(ErrorCode.CarNumbersNotEnoughException, "Sorry, CarType.ToyotaCamry left numbers is not enough,Please choose other scheme.");
+                throw new CarRentalException(ErrorCode.CarNumbersNotEnoughException, "Sorry, CarType.ToyotaCamry left numbers is not enough, only " + leftToyotaCarNumbers +",Please choose other scheme.");
             }
             leftToyotaCarNumbers -= rentNums;
             return new ToyotaCamryCar();
         }
         else
         {
-            throw new CarRentalException(ErrorCode.CarTypeNotFoundException, "Car type is not found,Please choose correct type.");
+            throw new CarRentalException(ErrorCode.CarTypeNotFoundException, "Car type [" + carType + "] is not found,Please choose correct type.");
         }
     }
 }

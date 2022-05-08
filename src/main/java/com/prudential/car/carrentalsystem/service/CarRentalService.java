@@ -37,7 +37,7 @@ public class CarRentalService
         if (maxCouldPayFee < allCarRentFee)
         {
             //租车费用不足
-            throw new CarRentalException(ErrorCode.LackOfBalanceException, "Lack of balance,Please select a new scheme.");
+            throw new CarRentalException(ErrorCode.LackOfBalanceException, "Lack of balance, need " + allCarRentFee + " yuan. Please select a new scheme.");
         }
 
         return true;
